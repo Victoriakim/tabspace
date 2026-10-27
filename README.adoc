@@ -17,6 +17,20 @@ image::./demo.gif[demo]
 - Write in Markdown syntax
 - Uses natural language to recognize and highlight due dates
 - Darkmode
+- Canvas view with draggable, colored sticky notes saved in your browser
+
+=== Canvas
+Use the *Document* / *Canvas* switch at the top of the page to change views.
+In Canvas, choose *Add sticky note* to write a note, drag its handle to move it,
+or focus the handle and use the arrow keys (Shift moves in larger steps).
+The color buttons change a note's color. Deleted notes can be restored with *Undo delete*
+until you leave the canvas or delete another note.
+
+*Copy document to canvas* copies each nonempty text block into a sticky note.
+It does not remove or alter the original document. Images and rich-text formatting
+remain in Document view; canvas copies contain plain text only.
+Canvas notes, positions, colors, and the selected view are saved in this browser,
+separately from the document. They are not synced to other devices.
 
 == Usage
 To set tabspace as your new tab page, depending on your browser can either set up the project as a

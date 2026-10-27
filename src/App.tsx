@@ -7,6 +7,8 @@ import Help from './Help';
 import Visualization, { IVisualization } from './Visualization';
 import { useSettingsStore } from './storage';
 import Settings from './Settings';
+import Canvas from './Canvas';
+import { useCanvasStore } from './canvasStorage';
 
 function App() {
   const [location] = useLocation();
@@ -44,9 +46,19 @@ function App() {
 
 type IHome = Pick<IVisualization & IEditor, 'tasks' | 'setTasks'>;
 function Home({ tasks, setTasks }: IHome) {
-  return (<div>
-    <Visualization tasks={tasks} />
-    <Editor setTasks={setTasks} />
+  const { mode, setMode } = useCanvasStore();
+  return (<div className="home-workspace">
+    <header className="workspace-switcher">
+      <span className="workspace-brand">Tabspace<span aria-hidden="true"> ✦</span></span>
+      <div className="workspace-tabs" role="group" aria-label="Workspace view">
+        <button type="button" aria-pressed={mode === 'document'} onClick={() => setMode('document')}>Document</button>
+        <button type="button" aria-pressed={mode === 'canvas'} onClick={() => setMode('canvas')}>Canvas</button>
+      </div>
+    </header>
+    {mode === 'canvas' ? <Canvas /> : <div className="document-workspace">
+      <Visualization tasks={tasks} />
+      <Editor setTasks={setTasks} />
+    </div>}
   </div>)
 }
 
